@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="d9318565-5c50-42e3-beaa-7a984d8b8059.webp" type="image/x-icon">
+    <title>PlayZone Games</title>
+    <style>
+        header {
+            background-color: #f1c40f;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gam {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #ff6f61;
+            font-size: 24px;
+        }
+
+        p {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ff1a53;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ff6f61;
+            font-size: 18px;
+        }
+
+        #reloadButton {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #reloadButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>PlayZone</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Beranda</a></li>
+                <li><a href="bermain.html">Permainan</a></li>
+                <li><a href="#">Pelajaran Yang Mengasah Otak</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+            </ul>
+        </nav>
+    </header>
+    <button id="reloadButton" onclick="reloadPage()">Reload</button>
+    <div class="gam">
+        <div class="container">
+            <h1>🌟 Tebak Angka Ajaib 🌟</h1>
+            <p>Ayo bermain! Saya telah memilih sebuah angka antara 1 dan 10. Coba tebak angka yang saya pilih!</p>
+            <input type="number" id="guess" placeholder="Masukkan angka" min="1" max="10">
+            <br><br>
+            <button onclick="checkGuess()">Tebak</button>
+            <p id="message"></p>
+        </div>
+    </div>
+    <script>
+        var secretNumber = Math.floor(Math.random() * 10) + 1;
+
+        function checkGuess() {
+            var guess = parseInt(document.getElementById("guess").value);
+            var message = document.getElementById("message");
+
+            if (isNaN(guess) || guess < 1 || guess > 10) {
+                message.textContent = "Mohon masukkan angka antara 1 dan 10.";
+            } else if (guess === secretNumber) {
+                message.innerHTML = `<span style="color: #4caf50;">🎉 Selamat! Angka yang kamu tebak BENAR! 🎉</span>`;
+            } else {
+                message.textContent = "😔 Ups! Angka yang kamu tebak SALAH. Coba lagi!";
+            }
+        }
+
+        function reloadPage() {
+            location.reload();
+        }
+    </script>
+
+</body>
+
+</html>

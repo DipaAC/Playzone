@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="d9318565-5c50-42e3-beaa-7a984d8b8059.webp" type="image/x-icon">
+    <title>Kata Acak</title>
+    <style>
+        header {
+            background-color: #f1c40f;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gam {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #wordDisplay {
+            font-size: 24px;
+            margin-top: 30px;
+        }
+
+        #inputField {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        #inputField:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        #checkButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #checkButton:hover {
+            background-color: #45a049;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #reloadButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #reloadButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>PlayZone</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Beranda</a></li>
+                <li><a href="bermain.html">Permainan</a></li>
+                <li><a href="#">Pelajaran Yang Mengasah Otak</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h class="gam">
+        <div class="container">
+            <h1>Kata Acak</h1>
+            <div id="wordDisplay">Kata akan muncul di sini</div>
+            <input type="text" id="inputField" placeholder="Tebak kata">
+            <button id="checkButton">Cek</button>
+            <button id="reloadButton">Reload</button>
+            <div id="message"></div>
+        </div>
+    </h>
+    <script>
+        const words = ['apel', 'jeruk', 'mangga', 'pisang', 'semangka', 'melon', 'nanas', 'durian', 'anggur', 'sirsak', 'srikaya', 'jeruk', 'lemon', 'kelengkeng', 'sawo', 'nangka', 'buanaga', 'alpukat', 'strobery', 'plum', 'markisa', 'bluberi', 'murbei'];
+        let randomWord = '';
+        let scrambledWord = '';
+
+        function generateRandomWord() {
+            randomWord = words[Math.floor(Math.random() * words.length)];
+            scrambledWord = randomWord.split('').sort(function () { return 0.5 - Math.random() }).join('');
+            document.getElementById('wordDisplay').textContent = scrambledWord;
+        }
+
+        function checkWord() {
+            let userInput = document.getElementById('inputField').value.toLowerCase();
+            if (userInput === randomWord) {
+                document.getElementById('message').textContent = 'Tebakan Anda benar!';
+            } else {
+                document.getElementById('message').textContent = 'Tebakan Anda salah. Coba lagi!';
+            }
+        }
+
+        function reloadPage() {
+            location.reload();
+        }
+
+        document.getElementById('checkButton').addEventListener('click', checkWord);
+        document.getElementById('reloadButton').addEventListener('click', reloadPage);
+
+        generateRandomWord();
+    </script>
+</body>
+
+</html>
